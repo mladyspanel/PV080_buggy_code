@@ -31,7 +31,13 @@ def fetch_website(urllib_version, url):
         return
     urllib = urllib3
     # Fetch and print the requested URL
- 
+    allowed_urls = {
+        "https://www.google.com",
+    }
+    if url not in allowed_urls:
+        print("URL is not allowed")
+        return
+
     try: 
         http = urllib.PoolManager()
         r = http.request('GET', url)
